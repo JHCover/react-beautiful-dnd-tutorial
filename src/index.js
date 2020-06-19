@@ -8,12 +8,17 @@ import Column from './Column'
 
 class App extends React.Component {
     state = initialData;
+
+
     onDragEnd = result => {
+
         const { destination, source, draggableId } = result;
 
         if(!destination) {
             return;
         }
+
+
 
         if(
             destination.droppableId === source.droppableId &&
