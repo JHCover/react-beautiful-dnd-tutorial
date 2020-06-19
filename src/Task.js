@@ -9,12 +9,7 @@ const Container = styled.div`
     padding: 8px;
     margin-bottom: 8px;
     display: flex;
-    background-color: ${props => 
-    props.isDragDisabled
-        ? 'lightgrey'
-        : props.isDragging
-        ? 'lightgreen' 
-        : 'white'}
+    background-color: ${props => props.isDragging ? 'lightgreen' : 'white'}
    
 `;
 
@@ -29,19 +24,16 @@ const Handle = styled.div`
 
 export default class Task extends React.Component {
     render() {
-        const isDragDisabled = this.props.task.id === 'task-1';
         return (
             <Draggable
                 draggableId={this.props.task.id}
                 index={this.props.index}
-                isDragDisabled={isDragDisabled}
             >
                 {(provided, snapshot) => (
                     <Container
                         {...provided.draggableProps}
                         ref={provided.innerRef}
                         isDragging={snapshot.isDragging}
-                        isDragDisabled={isDragDisabled}
                     >
                         <Handle
                             {...provided.dragHandleProps}
